@@ -1,0 +1,255 @@
+/* Login page */
+#loginpage_body {
+  margin: 1%;
+  font-family: sans-serif;
+  background-image: url(../images/login_background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginbox {
+  width: 420px;
+  height: 480px;
+  background: #e8505b;
+  color: #fff;
+  top: 60%;
+  left: 30%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 50px 35px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.loginbox h1 {
+  margin: 0;
+  padding: 25px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.loginbox p {
+  margin: 0;
+  padding: 20px 0 5px 0;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.loginbox input {
+  width: 95%;
+  margin-bottom: 1px;
+}
+
+.loginbox input[type="text"] {
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 45px;
+  font-size: 20px;
+  color: #323232;
+}
+.loginbox input[type="password"] {
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 45px;
+  font-size: 20px;
+  color: #323232;
+}
+
+
+.loginbox input::placeholder {
+  color: #f3ecc2;
+}
+
+.loginbox input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 45px;
+  background: #fff;
+  color: #e8505b;
+  font-size: 20px;
+  border-radius: 20px;
+  margin: 12px 0;
+}
+
+.loginbox input[type="submit"]:hover {
+  cursor: pointer;
+  background: #ffdecf;
+  color: #323232;
+}
+
+.loginbox a {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffdecf;
+}
+
+.loginbox a:hover {
+  color: #fff;
+}
+
+/* Sign up */
+#register_body {
+  background-image: url(../images/create_new_acc_img.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+#signup_login-box
+{
+    height: 300px;
+    width: 600px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 50px 35px;
+
+}
+
+.signup_left-box
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 300px;
+    height: 400px;
+}
+
+.signup_login-box h1
+{
+    margin: 0 0 20px 0;
+    font-weight: 300;
+    font-size: 28px;
+}
+
+.signup_left-box input[type="text"],
+input[type="password"]
+{
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #aaa;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.signup_left-box input[type="submit"]
+{
+    margin-bottom: 28px;
+    width: 120px;
+    height: 32px;
+    background: #f44336;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.2s ease;
+    cursor: pointer;
+
+}
+
+.signup_left-box input[type="submit"]:hover,
+input[type="submit"]:focus
+{
+    background: #ff5722;
+    transition: 0.2s ease;
+}
+
+.signup_right-box
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 367px;
+    height: 400px;
+    background-image: url(../images/image1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.or
+{
+    position: absolute;
+    top: 180px;
+    left: 280px;
+    width: 40px;
+    height: 40px;
+    background: #efefef;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    line-height: 40px;
+    text-align: center;
+}
+
+.signup_right-box .signinwith
+{
+    display: block;
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: #000;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+button.social
+{
+    margin-bottom: 20px;
+    width: 220px;
+    height: 36px;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 500;
+    transition: 0.2s ease;
+    cursor: pointer;
+    margin-left: 23px;
+}
+
+.facebook
+{
+    background: #32508e;
+}
+.twitter
+{
+    background: #55acee;
+}
+.google
+{
+    background: #dd4b39;
+}
+
+
+/* Reset password */
+.form-gap {
+    padding-top: 70px;
+}
