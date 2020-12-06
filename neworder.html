@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -10,161 +10,81 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<script type="text/javascript">
-		function submit_new_order() {
-			var order_date, cust_name, tqty, qty, price, total, sub_total, gst, discount, net_total, paid, due, payment_type;
-			order_date = document.getElementById('order_date').value;
-			cust_name = document.getElementById('cust_name').value;
-			tqty = document.getElementById('tqty').value;
-			qty = document.getElementById('qty').value;
-			price = document.getElementById('price').value;
-			total = document.getElementById('total').value;
-			sub_total = document.getElementById('sub_total').value;
-			gst = document.getElementById('gst').value;
-			discount = document.getElementById('discount').value;
-			net_total = document.getElementById('net_total').value;
-			paid = document.getElementById('paid').value;
-			due = document.getElementById('due').value;
-			payment_type = document.getElementById('payment_type').value
-
-		}
-	</script>
-
 </head>
 
-<body>
-	<div class="overlay">
-		<div class="loader"></div>
-	</div>
-	<!-- Navbar -->
-	<br /><br />
+<body class="container-fluid" style="padding: 10px;">
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 mx-auto">
-				<div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
-					<div class="card-header">
-						<h4>New Orders</h4>
-					</div>
-					<div class="card-body">
-						<form id="get_order_data" onsubmit="return false">
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label" align="right">Order Date</label>
-								<div class="col-sm-6">
-									<input type="date" id="order_date" name="order_date" value="">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-3 col-form-label" align="right">Customer Name*</label>
-								<div class="col-sm-6">
-									<input type="text" id="cust_name" name="cust_name" class="form-control form-control-sm" placeholder="Enter Customer Name" required />
-								</div>
-							</div>
-
-
-							<div class="card" style="box-shadow:0 0 15px 0 lightgrey;">
-								<div class="card-body">
-									<h3>Make a order list</h3>
-									<table align="center" style="width:800px;">
-										<thead>
-											<tr>
-												<th>#</th>
-												<th style="text-align:center;">Item Name</th>
-												<th style="text-align:center;">Total Quantity</th>
-												<th style="text-align:center;">Quantity</th>
-												<th style="text-align:center;">Price</th>
-												<th>Total</th>
-											</tr>
-										</thead>
-										<tbody id="invoice_item">
-											<tr>
-												<td><b id="number">1</b></td>
-												<td>
-													<select name="pid[]" class="form-control form-control-sm" required>
-														<option>Washing Machine</option>
-													</select>
-												</td>
-												<td><input name="tqty[]" id="tqty" type="text" class="form-control form-control-sm"></td>
-												<td><input name="qty[]" id="qty" type="text" class="form-control form-control-sm" required></td>
-												<td><input name="price[]" id="price" type="text" class="form-control form-control-sm"></td>
-												<td><input name="total[]" id="total" type="text" class="form-control form-control-sm"></td </tr>
-										</tbody>
-									</table>
-									<!--Table Ends-->
-									<center style="padding:10px;">
-										<button id="add" style="width:150px;" class="btn btn-success">Add</button>
-										<button id="remove" style="width:150px;" class="btn btn-danger">Remove</button>
-									</center>
-								</div>
-								<!--Crad Body Ends-->
-							</div> <!-- Order List Crad Ends-->
-
-							<p></p>
-							<div class="form-group row">
-								<label for="sub_total" class="col-sm-3 col-form-label" align="right">Sub Total</label>
-								<div class="col-sm-6">
-									<input type="text" name="sub_total" class="form-control form-control-sm" id="sub_total" required />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="gst" class="col-sm-3 col-form-label" align="right">GST (18%)</label>
-								<div class="col-sm-6">
-									<input type="text" name="gst" class="form-control form-control-sm" id="gst" required />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="discount" class="col-sm-3 col-form-label" align="right">Discount</label>
-								<div class="col-sm-6">
-									<input type="text" name="discount" class="form-control form-control-sm" id="discount" required />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="net_total" class="col-sm-3 col-form-label" align="right">Net Total</label>
-								<div class="col-sm-6">
-									<input type="text" name="net_total" class="form-control form-control-sm" id="net_total" required />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="paid" class="col-sm-3 col-form-label" align="right">Paid</label>
-								<div class="col-sm-6">
-									<input type="text" name="paid" class="form-control form-control-sm" id="paid" required>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="due" class="col-sm-3 col-form-label" align="right">Due</label>
-								<div class="col-sm-6">
-									<input type="text" name="due" class="form-control form-control-sm" id="due" required />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="payment_type" class="col-sm-3 col-form-label" align="right">Payment Method</label>
-								<div class="col-sm-6">
-									<select name="payment_type" class="form-control form-control-sm" id="payment_type" required />
-									<option>Cash</option>
-									<option>Card</option>
-									<option>Draft</option>
-									<option>Cheque</option>
-									</select>
-								</div>
-							</div>
-
-							<center>
-								<input type="submit" id="order_form" style="width:150px;" class="btn btn-info" value="Order" onclick="submit_new_order()">
-								<input type="submit" id="print_invoice" style="width:150px;" class="btn btn-success d-none" value="Print Invoice">
-							</center>
-
-
-						</form>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
+<form>
+  <div class="form-group row">
+    <label for="date" class="col-4 col-form-label">Date</label> 
+    <div class="col-8">
+      <input id="date" name="date" placeholder="Order Date" type="text" class="form-control" required="required">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="name" class="col-4 col-form-label">Customer Name</label> 
+    <div class="col-8">
+      <input id="name" name="name" placeholder="Enter Customer Name" type="text" class="form-control" required="required">
+    </div>
+  </div>
+  <div class="transact">
+  <div class="form-group row">
+    <label for="item1" class="col-4 col-form-label">Item 1</label> 
+    <div class="col-8">
+      <input id="item1" name="item1" placeholder="Enter Item Name" type="text" class="form-control" required="required">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="quantity1" class="col-4 col-form-label"></label> 
+    <div class="col-8">
+      <input id="quantity1" name="quantity1" placeholder="Enter Quantity" type="text" class="form-control" required="required">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="price1" class="col-4 col-form-label"></label> 
+    <div class="col-8">
+      <input id="price1" name="price1" placeholder="Enter Price" type="text" class="form-control" required="required">
+    </div>
+  </div> 
+</div>
+  <div class="form-group row">
+  	<div class="col">
+  		&nbsp;
+    </div>
+    <div class="col">
+  		&nbsp;
+    </div>
+  	<div class="col">
+     <button class="btn btn-primary" onclick="add_item();" type="button">Add Item</button>
+    </div>
+     <div class="col">
+     <button class="btn btn-primary" type="button" onclick="remove_item();">Remove Last Item</button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <button name="submit" type="button" onclick="check();" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
 
 </body>
+<script type="text/javascript">
+	$(document).ready( count = 2);
+	function add_item(){
+		$('.transact').append('<div class="additional'+count+'"><div class="form-group row"><label for="item'+count+'" class="col-4 col-form-label">Item '+count+'</label><div class="col-8"><input id="item'+count+'" name="item'+count+'" placeholder="Enter Item Name" type="text" class="form-control" required="required"></div></div><div class="form-group row"><label for="quantity'+count+'" class="col-4 col-form-label"></label> <div class="col-8"><input id="quantity'+count+'" name="quantity'+count+'" placeholder="Enter Quantity" type="text" class="form-control" required="required"></div></div><div class="form-group row"><label for="price'+count+'" class="col-4 col-form-label"></label> <div class="col-8"><input id="price'+count+'" name="price'+count+'" placeholder="Enter Price" type="text" class="form-control" required="required"></div></div>');
+		count++;
+	}
 
+	function remove_item(){
+		count--;
+		$('.additional'+count).remove();
+	}
+
+	function check(){
+		for (var i = 1;i<count; i++) {
+			console.log($('#item'+i).val());
+		}
+	}
+</script>
 </html>
