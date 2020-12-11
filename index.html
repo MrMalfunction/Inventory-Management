@@ -72,7 +72,6 @@ input.addEventListener("keyup", function(event) {
       o['username'] = username;
       o['password'] = password;
       data = JSON.stringify(o);
-
        let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/alpha/auth",{
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
@@ -91,8 +90,10 @@ input.addEventListener("keyup", function(event) {
           createCookie('SSNID',verify,30);
           window.location = "/dashboard.html";
         }
-        if(verify === "Login failed"){
+        if(verify === "Login failed" || verify==="Nothing Happened"){
           alert("Soemthing Went Wrong");
+           $('#floatingInput').val("");
+           $('#floatingPassword').val("");
           console.log(verify);
         }
     }
