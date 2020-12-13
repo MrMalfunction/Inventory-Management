@@ -87,6 +87,7 @@ input.addEventListener("keyup", function(event) {
           var verify = await resp.json();
           if (verify != "Login failed"){
           console.log(verify);
+          createCookie('userid',username,30);
           createCookie('SSNID',verify,30);
           window.location = "/dashboard.html";
         }

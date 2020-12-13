@@ -1,6 +1,5 @@
  <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,19 +12,22 @@
 
 <body class="container-fluid" style="padding: 10px; overflow-x: hidden;">
 
-<form>
-  <div class="input-group mb-3">
-    <label for="date" class="col-4 col-form-label">Order Date</label> 
-    <div class="col-8">
-      <input id="date" name="date" placeholder="Date" type="date" class="form-control" required="required">
-    </div>
-  </div>
+<form>  
   <div class="input-group mb-3">
     <label for="name" class="col-4 col-form-label">Customer Name</label> 
     <div class="col-8">
       <input id="name" name="name" placeholder="Enter Customer Name" type="text" class="form-control" required="required">
     </div>
   </div>
+<div class="input-group mb-3">
+    <label for="type" class="col-4 col-form-label">Type of Transaction(In/Out)</label> 
+    <div class="col-8">
+      <select id="type" name="type" required="required" class="form-control">
+        <option value="_in">IN</option>
+        <option value="_out">OUT</option>
+      </select>
+    </div>
+  </div> 
   <div class="transact">
   <div class="input-group mb-3">
     <label for="item1" class="col-4 col-form-label">Item 1</label> 
@@ -90,9 +92,10 @@
 </form>
 
 </body>
+<script type="text/javascript" src="/order.js"></script>
 <script type="text/javascript">
 	var count;
-
+    var cal_done = 0;
 	$(document).ready(function(){
 		count =2;
 		$('#tax').on('change',function(){
@@ -115,17 +118,47 @@
 		quantity = '#quantity'+String(count-1);
 		if (count === 2){
 			$('#sub_total').val(0);
-			$('#sub_quantity_total').val(0);
+			$('#sub_quantity_total').val(0); 
 		}
+    if($('#item'+(count-1)).val() === ""){
+      $('#item'+(count-1)).css({"border-color" :"red","box-shadow" :"5px 10px red"});
+      return null;
+    }
+    else{
+      $('#item'+(count-1)).css({"border-color" :"","box-shadow" :""});
+    }
+
+    if($('#quantity'+(count-1)).val() === ""){
+      $('#quantity'+(count-1)).css({"border-color" :"red","box-shadow" :"5px 10px red"});
+      return null;
+    }
+    else{
+      $('#quantity'+(count-1)).css({"border-color" :"","box-shadow" :""});
+    }
+
+    if($('#price'+(count-1)).val() === ""){
+      $('#price'+(count-1)).css({"border-color" :"red","box-shadow" :"5px 10px red"});
+      return null;
+    }
+    else{
+      $('#price'+(count-1)).css({"border-color" :"","box-shadow" :""});
+    }
+    if(cal_done != 0 && arguments[0] === "calc"){
+      return 0;
+    }
 		if(Number($(added).val())*Number($(quantity).val())+Number($('#sub_total').val())!=Number($('#sub_total').val())&&Number($(quantity).val())+Number($('#sub_quantity_total').val())!=Number($('#sub_quantity_total').val())){
 		$('#sub_total').val(Number($(added).val())*Number($(quantity).val())+Number($('#sub_total').val()));
 		$('#sub_quantity_total').val(Number($(quantity).val())+Number($('#sub_quantity_total').val()));
 		$('#sub_total').trigger('change');
+        cal_done = 0;
 	}
-	if(arguments[0] == "calc")
+	if(arguments[0] === "calc"){
+    cal_done = 1;
 		return 0;
+  }
 		$('.transact').append('<div class="additional'+count+'"><div class="input-group mb-3"><label for="item'+count+'" class="col-4 col-form-label">Item '+count+'</label><div class="col-8"><input id="item'+count+'" name="item'+count+'" placeholder="Enter Item Name" type="text" class="form-control" required="required" ></div></div><div class="input-group mb-3"><label for="quantity'+count+'" class="col-4 col-form-label"></label> <div class="col-8"><input id="quantity'+count+'" name="quantity'+count+'" placeholder="Enter Quantity" type="number" class="form-control" required="required"  class="quantity"></div></div><div class="input-group mb-3"><label for="price'+count+'" class="col-4 col-form-label"></label> <div class="col-8"><input id="price'+count+'" name="price'+count+'" placeholder="Enter Price" type="number" class="form-control" required="required" "></div></div>');
 		count++;
+
 	}
 
 	function remove_item(){
@@ -148,12 +181,6 @@
 		function calc(){
 			add_item("calc");
 		}
-
-	function check(){
-		for (var i = 1;i<count; i++) {
-			console.log($('#quantity'+i).val());
-			console.log($('#price')+i).val();
-		}
-	}
 </script>
+<script type="text/javascript" src="/cookie.js"></script>
 </html>
