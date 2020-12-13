@@ -1,4 +1,5 @@
 function check(){
+	var o = {};
 	remove = 0;
 	flag = 0;
 	name = ($('#name').val());
@@ -34,14 +35,25 @@ function check(){
       $('#price'+(count-1)).css({"border-color" :"","box-shadow" :""});
     }
 	}
+	var jsonObj = {
+		"uerid" : readCookie('userid')+$('#type').val(),
+		"Transactions" :[],
+		"Total Price" : $('#total').val()
+		};
 	for (var i = 1; i < count; i++) {
 		item = ($('#item'+i).val());
 		quantity = ($('#quantity'+i).val());
 		price = ($('#price'+i).val());
+		data = {};
+		data['item'] = item;
+		data['quantity'] = quantity;
+		data['price'] = price;
+		jsonObj['Transactions'].push(data);
 		if(item === "" && quantity === "" && price ===""){
 			$(".additional"+i).remove();
 			++remove;
 		}
 	}
 	count = count - remove;
+	console.log(JSON.stringify(jsonObj));
 }
