@@ -36,9 +36,10 @@ function check(){
     }
 	}
 	var jsonObj = {
-		"uerid" : readCookie('userid')+$('#type').val(),
+		"userid" : readCookie('userid')+$('#type').val(),
 		"Transactions" :[],
-		"Total Price" : $('#total').val()
+		"Total Price" : $('#total').val(),
+		"ssnid" : readCookie('ssnid').val()
 		};
 	for (var i = 1; i < count; i++) {
 		item = ($('#item'+i).val());
@@ -55,5 +56,17 @@ function check(){
 		}
 	}
 	count = count - remove;
-	console.log(JSON.stringify(jsonObj));
+	      data = JSON.stringify(jsonObj);
+       let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/alpha/data-input",{
+          method: 'POST', // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: 'follow', // manual, *follow, error
+          referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: (data) // body data type must match "Content-Type" header        
+          });
 }
