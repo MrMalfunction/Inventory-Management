@@ -1,0 +1,23 @@
+.btn{
+  width: 98%;
+  box-shadow: 5px 10px #FF671B;
+  border: none;
+  background-color: #005D9E;
+  color: white;
+  padding: 14px 28px;
+  margin-top: 8vh;
+  margin-left: 0.5vw;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover{
+  color: white;
+}
+
+.welcome{
+  text-align: center;
+  font-size: 25px;
+  padding-top: 25px;
+}
