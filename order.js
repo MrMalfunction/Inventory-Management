@@ -39,7 +39,7 @@ async function check(){
 		"userid" : readCookie('userid')+$('#type').val(),
 		"Transactions" :[],
 		"Total Price" : $('#total').val(),
-		"ssnid" : readCookie('ssnid')
+		"ssnid" : readCookie('SSNID')
 		};
 	for (var i = 1; i < count; i++) {
 		item = ($('#item'+i).val());
