@@ -1,4 +1,4 @@
-function check(){
+async function check(){
 	var o = {};
 	remove = 0;
 	flag = 0;
