@@ -15,6 +15,33 @@
   </head>
 
   <body class="container-fluid">
-
+<div class="live_data">
+	
+</div>
 </body>
+<script type="text/javascript">
+	$('document').ready(async function(){
+		        var jsonObj = {
+                "userid" : readCookie('userid')+$('#type').val(),
+                "ssnid" : readCookie('SSNID'),
+                "query": "live"
+            }
+ let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/alpha/data-out",{
+          method: 'POST', // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: 'follow', // manual, *follow, error
+          referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: (JSON.stringify(jsonObj)) // body data type must match "Content-Type" header        
+          });
+			 var verify = await resp.json();
+			 for(i in verify){
+			 	console.log($('.live_data').append(i+" = "+verify[i]+"<br>"));
+			 }
+	})
+</script>
 </html>

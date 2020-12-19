@@ -2,7 +2,7 @@
 <head>
       <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css" rel="stylesheet">
@@ -73,7 +73,6 @@
         newdate = myDate[1].replace("/",",");
         olddate =  new Date(olddate).getTime();
         newdate =  new Date(newdate).getTime();
-        console.log(olddate,newdate);
         var jsonObj = {
                 "userid" : readCookie('userid')+$('#type').val(),
                 "ssnid" :  readCookie('SSNID'),
@@ -96,7 +95,6 @@
           });
  var verify = await resp.json();
  data = verify;
- console.log(data);
 var dataset = [];
 var $table = $('#example');
 for (i = 0; i < data.length; i++){
