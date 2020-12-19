@@ -31,22 +31,29 @@
   </div> 
   <div class="input-group mb-3">
     <div class="offset-4 col-8">
-      <button name="submit" type="button" onclick="data();" class="btn btn-primary">Submit</button>
+      <button name="submit" type="button"  id="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>
-
+<div class = "tb">
  <table id="example"  data-search="true" hidden="true">
   <thead>
     <tr>
       <th data-field="timestamp"  data-sortable="true">Timestamp</th>
-            <th data-field="transactions">transactions</th>
+            <th data-field="transactions">Transactions</th>
     </tr>
   </thead>
 </table>
+</div>
 </body>
 <script type="text/javascript">
     $('document').ready(function(){
+        $("#submit").click( async function()
+           {
+            $('.tb').html(' <table id="example"  data-search="true" hidden="true"><thead><tr><th data-field="timestamp"  data-sortable="true">Timestamp</th><th data-field="transactions">Transactions</th></tr></thead></table>');
+            await  get_data();
+           }
+      );
         $('#range').daterangepicker({
     "showDropdowns": true,
     "minYear": 2020,
@@ -57,7 +64,9 @@
   console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 });
     })
-    async function data(){
+</script>
+<script type="text/javascript">
+     async function get_data(){
         var mydate = $('#range').val();
         myDate = mydate.split("-");
         olddate = myDate[0].replace("/",",");
@@ -66,8 +75,8 @@
         newdate =  new Date(newdate).getTime();
         console.log(olddate,newdate);
         var jsonObj = {
-                "userid" : "lol",//readCookie('userid')+$('#type').val(),
-                "ssnid" : "lol",//readCookie('SSNID'),
+                "userid" : readCookie('userid')+$('#type').val(),
+                "ssnid" :  readCookie('SSNID'),
                 "query": "transact",
                 "type" : $('#type').val(),
                 "from_date" : olddate,
@@ -85,22 +94,25 @@
           referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
           body: (JSON.stringify(jsonObj)) // body data type must match "Content-Type" header        
           });
- console.log(resp.json());
- return;
+ var verify = await resp.json();
+ data = verify;
+ console.log(data);
 var dataset = [];
 var $table = $('#example');
 for (i = 0; i < data.length; i++){
 temp_data = {};
-temp_data['timestamp'] = data[i]['timestamp'];
+temp_date = new Date(Number(data[i]['timestamp'])*1000);
+temp_data['timestamp'] = temp_date.toString();
 transact_str = "";
 for (j in data[i]['transactions']){
 //console.log(j+"="+data[i]['transactions'][j]);
-transact_str += j+"="+data[i]['transactions'][j] + ",";
+transact_str += data[i]['transactions'][j]["item"]+"="+data[i]['transactions'][j]["quantity"] + ",";
 }
 temp_data['transactions'] = transact_str;
 dataset.push(temp_data);
 }
 console.log(dataset);
+$("#example").attr("hidden",false);
 $table.bootstrapTable({
       data: dataset,
       sortStable: true
