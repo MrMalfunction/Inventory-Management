@@ -101,6 +101,10 @@
           body: (JSON.stringify(jsonObj)) // body data type must match "Content-Type" header        
           });
  var verify = await resp.json();
+if (verify === "Invalid Transaction") {
+  alert("Please Login Again");
+  window.location.replace('/');
+}
  data = verify;
 var dataset = [];
 var $table = $('#example');

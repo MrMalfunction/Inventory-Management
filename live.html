@@ -47,6 +47,10 @@
           body: (JSON.stringify(jsonObj)) // body data type must match "Content-Type" header        
           });
 			 var verify = await resp.json();
+        if (verify === "Invalid Transaction") {
+          alert("Please Login Again");
+          window.location.replace('/');
+        }
 			 for(i in verify){
 			 	console.log($('.live_data').append(i+" = "+verify[i]+"<br>"));
 			 }

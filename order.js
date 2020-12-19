@@ -69,4 +69,16 @@ async function check(){
           referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
           body: (data) // body data type must match "Content-Type" header        
           });
+        var verify = await resp.json();
+        if (verify === "Invalid Transaction") {
+          alert("Please Login Again");
+          window.location.replace('/');
+        }
+        if(verify === "Transction Successful"){
+        	alert("Transction Successful");
+        	 window.location.replace('/neworder.html');
+        }
+        else {
+        	alert(verify);
+        }
 }
