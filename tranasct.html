@@ -78,8 +78,8 @@
         myDate = mydate.split("-");
         olddate = myDate[0].replace("/",",");
         newdate = myDate[1].replace("/",",");
-        olddate =  new Date(olddate).getTime();
-        newdate =  new Date(newdate).getTime();
+        olddate =  new Date(olddate).getTime()/1000;
+        newdate =  new Date(newdate).getTime()/1000;
         var jsonObj = {
                 "userid" : readCookie('userid')+$('#type').val(),
                 "ssnid" :  readCookie('SSNID'),
@@ -88,7 +88,6 @@
                 "from_date" : olddate,
                 "to_date" : newdate
             }
-            console.log(jsonObj);
  let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/dev/data-out",{
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
