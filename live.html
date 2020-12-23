@@ -46,7 +46,7 @@
           body: (JSON.stringify(jsonObj)) // body data type must match "Content-Type" header        
           });
 			 var verify = await resp.json();
-        if (verify === "Invalid Transaction") {
+        if (verify === "Invalid Data Request" || verify === "Invalid Request") {
           alert("Please Login Again");
           window.location.replace('/');
         }
