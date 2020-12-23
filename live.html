@@ -12,12 +12,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/"></script>
 <script type="text/javascript" src="cookie.js"></script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     window.onload = function() {
       if(readCookie('userid') === null || readCookie('SSNID') === null)
         window.location.replace('/');
     };
-</script>
+</script>-->
     <!-- Custom styles for this template -->
   </head>
 
@@ -33,7 +33,7 @@
                 "ssnid" : readCookie('SSNID'),
                 "query": "live"
             }
- let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/alpha/data-out",{
+ let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/dev/data-out",{
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

@@ -57,7 +57,7 @@ async function check(){
 	}
 	count = count - remove;
 	      data = JSON.stringify(jsonObj);
-       let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/alpha/data-input",{
+       let resp = await fetch("https://m8fh5iwhj2.execute-api.ap-south-1.amazonaws.com/dev/data-input",{
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
