@@ -25,3 +25,13 @@ function readCookie(name) {
     }
     return null;
 }
+
+function eraseCookie(name) {
+    createCookie(name, '', -1);
+}
+
+function logout(){
+    eraseCookie('userid');
+    eraseCookie('SSNID');
+    window.location.replace('/');
+}
