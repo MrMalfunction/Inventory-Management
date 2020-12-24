@@ -81,7 +81,7 @@
         olddate =  new Date(olddate).getTime()/1000;
         newdate =  new Date(newdate).getTime()/1000;
         var jsonObj = {
-                "userid" : readCookie('userid')+$('#type').val(),
+                "userid" : readCookie('userid'),
                 "ssnid" :  readCookie('SSNID'),
                 "query": "transact",
                 "type" : $('#type').val(),
